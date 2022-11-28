@@ -1,0 +1,33 @@
+# Site settings
+title: "Avani's test repo for Jekyll-Asciidoc GitHub actions"
+description: "This repo is a demo for publishing Asciidoc files with GitHub actions and a Jekyll theme."
+repository: abhatt-rh/jekyll
+baseurl: /gh-actions-test/
+
+type: website
+
+plugins: [jekyll-asciidoc, jekyll-paginate, jekyll-redirect-from, jekyll-feed, jekyll-sitemap, premonition, jekyll/tagging, jekyll-seo-tag]
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-minimal
+
+# empty array for asciidoc
+asciidoc: {}
+# upstream doc attributes
+asciidoctor:
+   safe: unsafe
+
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+
+exclude:
+  - README.md
+  - vendor

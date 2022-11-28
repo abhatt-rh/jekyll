@@ -1,0 +1,128 @@
+// Module included in the following assemblies:
+//
+// * multicloud-gitops/multicloud-gitops-pattern.adoc
+
+:_content-type: REFERENCE
+[id="mcg-getting-started_{context}"]
+= Deploying the Multicloud GitOps Pattern
+:doctype: book
+:grand_parent: Patterns
+:nav_order: 1
+:parent: Multicloud GitOps
+
+[.no_toc]
+[discrete]
+[id="table-of-contents-getting-started"]
+== Table of contents
+
+. TOC
+
+= Prerequisites
+
+. An OpenShift cluster (Go to https://console.redhat.com/openshift/create[the OpenShift console]). Cluster must have a dynamic StorageClass to provision PersistentVolumes. See also link:../../multicloud-gitops/cluster-sizing[sizing your cluster].
+. (Optional) A second OpenShift cluster for multicloud demonstration or testing
+. A GitHub account (and, optionally, a token for it with repositories permissions, to read from and write to your forks)
+. The helm binary, see https://helm.sh/docs/intro/install/[here]
+
+The use of this blueprint depends on having at least one running Red Hat
+OpenShift cluster. It is desirable to have a cluster for deploying the GitOps
+management hub assets and a separate cluster(s) for the managed cluster(s).
+
+If you do not have a running Red Hat OpenShift cluster, you can start one on a
+public or private cloud by using https://console.redhat.com/openshift/create[Red Hat's cloud
+service].
+
+= How to deploy
+
+. Install the installation tooling dependencies.  You will need:
+
+{% include prerequisite-tools.md %}
+
+. Fork the https://github.com/hybrid-cloud-patterns/multicloud-gitops[multicloud-gitops] repo on GitHub.  It is necessary to fork because your fork will be updated as part of the GitOps and DevOps processes.
+. Clone the forked copy of this repository.
++
+[,sh]
+----
+ git clone git@github.com:your-username/multicloud-gitops.git
+----
+
+. Create a local copy of the Helm values file that can safely include credentials
++
+DO NOT COMMIT THIS FILE
++
+You do not want to push personal credentials to GitHub.
++
+[,sh]
+----
+ cp values-secret.yaml.template ~/values-secret.yaml
+ vi ~/values-secret.yaml
+----
+
+. Customize the deployment for your cluster
++
+[,sh]
+----
+git checkout -b my-branch
+vi values-global.yaml
+git add values-global.yaml
+git commit values-global.yaml
+git push origin my-branch
+----
+
+. You can deploy the pattern using the link:/infrastructure/using-validated-pattern-operator/[validated pattern operator]. If you do use the operator then skip to Validating the Environment below.
+. Preview the changes
++
+[,sh]
+----
+ make show
+----
+
+. Login to your cluster using oc login or exporting the KUBECONFIG
++
+[,sh]
+----
+ oc login
+----
++
+.or set KUBECONFIG to the path to your `kubeconfig` file. For example
++
+[,sh]
+----
+ export KUBECONFIG=~/my-ocp-env/hub/auth/kubconfig
+----
+
+. Apply the changes to your cluster
++
+[,sh]
+----
+ make install
+----
+
+. Check the operators have been installed
++
+[,text]
+----
+ OpenShift Console Web UI -> Installed Operators
+----
+
+. Check all applications are synchronised
+ Under the project `multicloud-gitops-hub` click on the URL for the ``hub``gitops``server``. The Vault application is not synched.
+
+link:/images/multicloud-gitops/multicloud-gitops-argocd.png[image:/images/multicloud-gitops/multicloud-gitops-argocd.png[Multicloud GitOps Hub\]]
+
+= Deploying the managed cluster applications
+
+Once the management hub has been set up correctly and confirmed to be working, it is time to attach one or more managed clusters to the architecture (see diagrams below).
+
+For instructions on deploying the edge, please read the following https://hybrid-cloud-patterns.io/multicloud-gitops/managed-cluster/[document].
+
+[discrete]
+[id="multicloud-gitops-application-demos-getting-started"]
+== Multicloud GitOps application demos
+
+As part of this pattern HashiCorp Vault has been installed. Refer to the section on https://hybrid-cloud-patterns.io/secrets/vault/[Vault].
+
+= Next Steps
+
+https://groups.google.com/g/hybrid-cloud-patterns[Help & Feedback]
+https://github.com/hybrid-cloud-patterns/multicloud-gitops/issues[Report Bugs]

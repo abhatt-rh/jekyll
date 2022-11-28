@@ -1,0 +1,85 @@
+// Module included in the following assemblies:
+//
+// * multicloud-gitops/multicloud-gitops-pattern.adoc
+
+:_content-type: REFERENCE
+[id="mcg-index_{context}"]
+= Multicloud GitOps
+:doctype: book
+:has_children: true
+:nav_order: 1
+:parent: Patterns
+
+[.pattern_logo]
+image::/images/logos/multicloud-gitops.png[Points]
+
+= Multicloud GitOps
+
+link:getting-started[Install]
+https://www.redhat.com/architect/portfolio/architecturedetail?ppid=8[Portfolio Architecture]
+https://groups.google.com/g/hybrid-cloud-patterns[Help & Feedback]
+https://github.com/hybrid-cloud-patterns/multicloud-gitops/issues[Report Bugs]
+
+[discrete]
+[id="table-of-contents-index"]
+== Table of contents
+
+. TOC
+
+[discrete]
+[id="background-index"]
+== Background
+
+Organizations are looking for a way to develop and deploy applications on an open hybrid cloud in a stable, simple, and secure way. This hybrid approach includes multi-cloud deployments where workloads may be running on different clusters on different clouds - private or public. This also requires an infrastructure-as-code approach that manages versions and being able to deploy based on specific deployment configurations.
+
+The pattern is derived from work done by the https://gitlab.com/redhatdemocentral/portfolio-architecture-examples/-/blob/main/spi-multi-cloud-gitops.adoc[Red Hat Portfolio Architecture team]
+
+[discrete]
+[id="solution-elements-index"]
+=== Solution elements
+
+* How to use a GitOps approach to manage multiple cloud deployments in both public and private clouds.
+* How to centrally manage multiple clusters, including workloads.
+* How to securely manage secrets across multi-cloud deployments.
+
+[discrete]
+[id="red-hat-technologies-index"]
+=== Red Hat Technologies
+
+* Red Hat OpenShift Container Platform (Kubernetes)
+* Red Hat Advanced Cluster Management (Open Cluster Management)
+* Red Hat OpenShift GitOps (ArgoCD)
+* Hashicorp Vault
+
+[discrete]
+[id="architecture-index"]
+== Architecture
+
+At a high level this requires a management hub, for DevOps and GitOps, and infrastructure that extends to more than one managed clusters running on private or public clouds.
+
+link:/images/multicloud-gitops/hybrid-multicloud-management-gitops-hl-arch.png[image:/images/multicloud-gitops/hybrid-multicloud-management-gitops-hl-arch.png[Multi-Cloud Architecture\]]
+
+[discrete]
+[id="logical-architecture-index"]
+=== Logical architecture
+
+link:/images/multicloud-gitops/logical-diagram.png[image:/images/multicloud-gitops/logical-diagram.png[Logical Architecture\]]
+
+[discrete]
+[id="physical-architecture-index"]
+=== Physical Architecture
+
+link:/images/multicloud-gitops/schema-gitops.png[image:/images/multicloud-gitops/schema-gitops.png[Physical Architecture\]]
+
+For additional logical, physical and dataflow diagrams, please see the work done by the https://gitlab.com/redhatdemocentral/portfolio-architecture-examples/-/blob/main/spi-multi-cloud-gitops.adoc[Red Hat Portfolio Architecture team]
+
+[discrete]
+[id="recorded-demo-index"]
+== Recorded Demo
+
+[discrete]
+[id="what-next-index"]
+== What Next
+
+* link:getting-started[Deploy the management hub]  using Helm
+* Add a managed cluster to link:managed-cluster[deploy the  managed cluster piece using ACM]

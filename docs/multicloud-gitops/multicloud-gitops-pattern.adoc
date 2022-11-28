@@ -1,0 +1,15 @@
+:_content-type: ASSEMBLY
+[id="multicloud-gitops-pattern"]
+= About the Multicloud GitOps PatternC
+
+include::modules/mcg-cluster-sizing.adoc[leveloffset=+1]
+
+include::modules/mcg-getting-started.adoc[leveloffset=+1]
+
+include::modules/mcg-ideas-for-customization.adoc[leveloffset=+1]
+
+include::modules/mcg-imperative-actions.adoc[leveloffset=+1]
+
+include::modules/mcg-index.adoc[leveloffset=+1]
+
+include::modules/mcg-managed-cluster.adoc[leveloffset=+1]

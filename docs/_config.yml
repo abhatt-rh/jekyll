@@ -2,7 +2,7 @@
 title: "Avani's test repo for Jekyll-Asciidoc GitHub actions"
 description: "This repo is a demo for publishing Asciidoc files with GitHub actions and a Jekyll theme."
 repository: abhatt-rh/jekyll
-baseurl: /gh-actions-test/
+baseurl: /jekyll/
 
 type: website
 
@@ -10,7 +10,7 @@ plugins: [jekyll-asciidoc, jekyll-paginate, jekyll-redirect-from, jekyll-feed, j
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-minimal
+theme: minima
 
 # empty array for asciidoc
 asciidoc: {}

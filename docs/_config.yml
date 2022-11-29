@@ -10,7 +10,7 @@ plugins: [jekyll-asciidoc, jekyll-paginate, jekyll-redirect-from, jekyll-feed, j
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll-theme-minimal
 
 # empty array for asciidoc
 asciidoc: {}

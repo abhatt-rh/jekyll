@@ -31,3 +31,6 @@ kramdown:
 exclude:
   - README.md
   - vendor
+  - Gemfile
+  - Gemfile.lock
+  - vendor/bundle
